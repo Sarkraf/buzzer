@@ -6,7 +6,6 @@ class Party < ApplicationRecord
   before_validation :generate_url
 
   def generate_url
-    url = SecureRandom.alphanumeric(10)
-    Party.exists?(url:) ? generate_url : url
+    self.url = SecureRandom.alphanumeric(10)
   end
 end
