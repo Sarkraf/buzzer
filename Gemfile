@@ -41,6 +41,11 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# Use obstruct for this issue:
+# /home/sarkraf/.rbenv/versions/3.3.5/lib/ruby/3.3.0/json/generic_object.rb:2: warning: /home/sarkraf/.rbenv/versions/3.3.5/lib/ruby/3.3.0/ostruct.rb was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.5.0.
+# You can add ostruct to your Gemfile or gemspec to silence this warning.
+gem 'ostruct'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
