@@ -10,8 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 0) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_28_150122) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "buzzs", force: :cascade do |t|
+    t.datetime "time"
+    t.boolean "clicked"
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_buzzs_on_group_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.integer "score"
+    t.string "name"
+    t.bigint "party_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["party_id"], name: "index_groups_on_party_id"
+  end
+
+  create_table "parties", force: :cascade do |t|
+    t.string "name"
+    t.string "passphrase"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "buzzs", "groups"
+  add_foreign_key "groups", "parties"
 end
