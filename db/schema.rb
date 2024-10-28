@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_28_150122) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_28_155100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "buzzs", force: :cascade do |t|
     t.datetime "time"
-    t.boolean "clicked"
+    t.boolean "clicked", default: false
     t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
