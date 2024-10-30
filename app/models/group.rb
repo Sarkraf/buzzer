@@ -18,6 +18,6 @@ class Group < ApplicationRecord
   end
 
   def create_buzz
-    Buzz.create(group: self)
+    Buzz.create!(group: self)
   end
 end

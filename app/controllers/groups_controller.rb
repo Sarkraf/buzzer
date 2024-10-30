@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to party_group_path(@group.party, @group)
+      redirect_to party_group_path(@group.party.name, @group.name)
     else
       @party = @group.party
       render "parties/choice", status: :unprocessable_entity
