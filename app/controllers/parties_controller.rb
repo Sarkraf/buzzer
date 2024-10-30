@@ -14,6 +14,6 @@ class PartiesController < ApplicationController
   end
 
   def manager
-
+    @party = Party.find_by(name: params[:name])
   end
 end
