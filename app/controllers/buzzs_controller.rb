@@ -1,0 +1,2 @@
+class BuzzsController < ApplicationController
+end

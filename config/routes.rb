@@ -13,7 +13,10 @@ Rails.application.routes.draw do
 
   get "parties/:name/:url", to: "parties#manager", as: :party_manager
 
-  resources :parties, param: :name do
-    resources :groups, param: :name, only: %i[show create]
+  resources :parties, param: :name, only: %i[create show] do
+    resources :groups, param: :name, only: %i[show create] do
+      resources :buzzs, only: %i[update]
+    end
   end
+
 end
