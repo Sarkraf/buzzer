@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'parties/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,7 +11,7 @@ Rails.application.routes.draw do
 
   get "parties/:name/choice", to: "parties#choice", as: :party_choice
 
-  resources :parties, param: :name do
+  resources :parties do
     resources :groups, only: %i[show create]
   end
 end
