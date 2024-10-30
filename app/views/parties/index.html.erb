@@ -1,7 +1,9 @@
-<ul>
-  <% @parties.each do |party| %>
-    <%= link_to party_choice_path(party.name) do %>
-      <li><%= party.name %></li>
+<div class="d-flex justify-content-center mt-5">
+  <ul >
+    <% @parties.each do |party| %>
+      <%= link_to party_choice_path(party.name) do %>
+        <li><%= party.name %></li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+</div>
