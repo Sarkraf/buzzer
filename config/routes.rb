@@ -15,8 +15,7 @@ Rails.application.routes.draw do
 
   resources :parties, param: :name, only: %i[create show] do
     resources :groups, param: :name, only: %i[show create] do
-      resources :buzzs, only: %i[update]
+      resources :buzzs, only: %i[update], to: "buzzs#buzz!"
     end
   end
-
 end
