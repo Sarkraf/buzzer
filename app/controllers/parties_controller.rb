@@ -3,11 +3,17 @@ class PartiesController < ApplicationController
     @parties = Party.all
   end
 
-  def choice
+  def show
     @party = Party.find_by(name: params[:name])
   end
 
-  def show
+  def choice
     @party = Party.find_by(name: params[:name])
+    @groups = @party.groups
+    @group = Group.new
+  end
+
+  def manager
+
   end
 end

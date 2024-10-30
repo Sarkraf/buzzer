@@ -1,3 +1,18 @@
 <h1><%= @party.name %></h1>
 
+<hr>
+<% @groups.each do |group| %>
+  <h2><%= group.name %></h2>
+  <%= link_to "Rejoindre", party_group_path(@party.name, group.name) %>
+<% end %>
+<hr>
+
+<%= simple_form_for [@party, @group] do |f| %>
+  <%= f.input :name, label: "Nom du groupe" %>
+  <%= f.input :party_id, as: :hidden, input_html: { value: @party.id } %>
+  <%= f.button :submit, "Créer le groupe" %>
+<% end %>
+
 <%= link_to "Show", party_path(@party.name) %>
+
+<%= link_to "Manage", party_manager_path(@party.name, @party.url) %>
