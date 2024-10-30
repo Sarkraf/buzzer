@@ -1,0 +1,15 @@
+<div>
+  <tr>
+    <th>"#"</th>
+    <th>Group</th>
+    <th>Points</th>
+  </tr>
+    <% @ranked_groups.each do |group| %>
+  <tr>
+      <td><%= @group.index + 1 %></td>
+      <td><%= group.name %></td>
+      <td><%= group.points %></td>
+  </tr>
+    <% end %>
+  </tr>
+</div>
