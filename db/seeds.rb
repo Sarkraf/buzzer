@@ -15,3 +15,7 @@ Party.destroy_all # Destroy all parties and groups + buzzs (dependent: :destroy)
 
 puts "Creating parties..."
 Party.create!(name: "Le Wagon", passphrase: "lewagon", url: "lewagon")
+
+puts "Creating groups..."
+Group.create!(name: "Group 1", party: Party.first)
+Group.create!(name: "Group 2", party: Party.first)
