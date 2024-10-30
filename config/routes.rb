@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   get "parties/:name/choice", to: "parties#choice", as: :party_choice
 
-  resources :parties do
-    resources :groups, only: %i[show create]
+  get "parties/:name/:url", to: "parties#manager", as: :party_manager
+
+  resources :parties, param: :name do
+    resources :groups, param: :name, only: %i[show create]
   end
 end

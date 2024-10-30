@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+puts "Destroying all parties..."
+puts "Destroying all groups..."
+puts "Destroying all buzzs..."
+Party.destroy_all # Destroy all parties and groups + buzzs (dependent: :destroy)
+
+puts "Creating parties..."
+Party.create!(name: "Le Wagon", passphrase: "lewagon", url: "lewagon")
