@@ -4,8 +4,9 @@ class Buzz < ApplicationRecord
   def buzz!
     self.clicked = true
     save
+  end
 
-  def reset_buzzer
-    Buzz.all.each { |buzz| buzz.update(clicked: false) }
+  def self.reset_buzzs
+    all.each { |buzz| buzz.update(clicked: false) }
   end
 end
