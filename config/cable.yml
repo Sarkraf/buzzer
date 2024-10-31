@@ -1,5 +1,5 @@
 development:
-  adapter: async
+  adapter: enhanced_postgresql
 
 test:
   adapter: test

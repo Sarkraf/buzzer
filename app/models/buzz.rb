@@ -1,8 +1,11 @@
 class Buzz < ApplicationRecord
   belongs_to :group
 
+  def buzz!
+    self.clicked = true
+    save
+
   def reset_buzzer
-    self.buzzed = false
-    self.save
+    Buzz.all.each { |buzz| buzz.update(clicked: false) }
   end
 end
