@@ -3,8 +3,8 @@
 <hr>
 
 <div data-controller="hello">
-  <h2 data-hello-target="value"><%= @buzz.clicked %></h2>
+  <h2 data-hello-target="status", id="buzz_status"><%= @buzz.clicked %></h2>
 
-  <%= button_to "Buzz", party_group_buzz_path(params[:party_name], @group.name, @buzz.id), method: :patch, data: { target: "buzzer"} %>
+  <%= link_to "Buzz", party_group_buzz_path(params[:party_name], @group.name, @buzz.id), data: { turbo_method: :patch, hello_target: "buzzer", action: "click->hello#buzz" }, id:"buzz_button" %>
 
 </div>

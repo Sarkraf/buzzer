@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
       redirect_to party_group_path(@group.party.name, @group.name)
     else
       @party = @group.party
+      @groups = @party.groups
       render "parties/choice", status: :unprocessable_entity
     end
   end
