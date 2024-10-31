@@ -1,18 +1,21 @@
-<h1><%= @party.name %></h1>
+<div class="container mt-5 text-center text-white">
+  <h1><%= @party.name %></h1>
 
-<hr>
-<% @groups.each do |group| %>
-  <h2><%= group.name %></h2>
-  <%= link_to "Rejoindre", party_group_path(@party.name, group.name) %>
-<% end %>
-<hr>
+  <hr>
+  <div class="d-grid gap-2 col-10 col-md-6 mx-auto">
+    <% @groups.each do |group| %>
+      <%= link_to group.name, party_group_path(@party.name, group.name), class:"btn btn-danger rounded-pill text-white mb-3"%>
+    <% end %>
+  </div>
+  <hr>
 
-<%= simple_form_for [@party, @group] do |f| %>
-  <%= f.input :name, label: "Nom du groupe" %>
-  <%= f.input :party_id, as: :hidden, input_html: { value: @party.id } %>
-  <%= f.button :submit, "Créer le groupe" %>
-<% end %>
+  <%= simple_form_for [@party, @group] do |f| %>
+    <%= f.input :name, label: "Nom du groupe" %>
+    <%= f.input :party_id, as: :hidden, input_html: { value: @party.id } %>
+    <%= f.button :submit, "Créer le groupe" %>
+  <% end %>
 
-<%= link_to "Show", party_path(@party.name) %>
+  <%= link_to "Show", party_path(@party.name) %>
 
-<%= link_to "Manage", party_manager_path(@party.name, @party.url) %>
+  <%= link_to "Manage", party_manager_path(@party.name, @party.url) %>
+</div>
