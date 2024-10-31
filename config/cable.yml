@@ -1,6 +1,5 @@
 development:
-  adapter: "postgresql_enhanced"
-  url: <%= ENV['DATABASE_URL'] %>
+  adapter: enhanced_postgresql
 
 test:
   adapter: test

@@ -1,6 +1,11 @@
 class BuzzsController < ApplicationController
-  def buzz!
+  def update
     @buzz = Buzz.find(params[:id])
-    @buzz.update!(clicked: true)
+    @buzz.buzz!
+    ActionCable.server.broadcast("buzz_channel", { action: "disable_buzzers", buzz_id: @buzz.id })
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to request.referer }
+    end
   end
 end
