@@ -4,7 +4,9 @@
 
 <div data-controller="hello">
   <h2 data-hello-target="status", id="buzz_status"><%= @buzz.clicked %></h2>
+  <h2 id="clickable"><%= @buzz.clickable %></h2>
 
-  <%= link_to "Buzz", party_group_buzz_path(params[:party_name], @group.name, @buzz.id), data: { turbo_method: :patch, hello_target: "buzzer", action: "click->hello#buzz" }, id:"buzz_button" %>
-
+  <%= link_to party_group_buzz_path(params[:party_name], @group.name, @buzz.id), data: { clickable: @buzz.clickable, turbo_method: :patch }, id:"buzz_button", role:"button", disabled: true do %>
+    <%= inline_svg_tag "red_buzzer.svg", alt: "Buzzer", class:"buzz" %>
+  <% end %>
 </div>
