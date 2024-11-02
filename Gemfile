@@ -29,6 +29,9 @@ gem "jbuilder"
 # Use this gem for better actioncable
 gem "actioncable-enhanced-postgresql-adapter"
 
+# Use helper for inline SVGs to use fill and stroke attributes
+gem 'inline_svg'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
