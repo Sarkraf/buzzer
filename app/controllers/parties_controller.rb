@@ -19,17 +19,12 @@ class PartiesController < ApplicationController
     @party = Party.find_by(name: params[:name])
   end
 
-  def reset_all_buzzers
-    @party = Party.find_by(name: params[:name])
-    @party.groups.each do |group|
-      group.buzzes.each do |buzz|
-        buzz.reset_buzzer
-      end
-    end
-  end
-
   def next
     reset_all_buzzers
   end
 
+  def reset_all_buzzers
+    @party = Party.find_by(name: params[:name])
+    @party.reset_buzzs
+  end
 end
