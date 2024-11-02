@@ -6,8 +6,7 @@ class PartiesController < ApplicationController
   def show
     @party = Party.find_by(name: params[:name])
     @groups = @party.groups
-    @ranked_groups = @party.groups.sort_by { |group| group.score }.reverse
-
+    @ranked_groups = @groups.sort_by(&:score).reverse
   end
 
   def choice
