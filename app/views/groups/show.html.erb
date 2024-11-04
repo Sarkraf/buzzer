@@ -1,10 +1,13 @@
-<h1><%= @group.name %></h1>
+<div class="container mt-5 text-center text-white">
 
-<hr>
+  <h1><%= @group.name %></h1>
 
-<div data-controller="hello">
-  <h2 data-hello-target="status", id="buzz_status"><%= @buzz.clicked %></h2>
+  <hr>
 
-  <%= link_to "Buzz", party_group_buzz_path(params[:party_name], @group.name, @buzz.id), data: { turbo_method: :patch, hello_target: "buzzer", action: "click->hello#buzz" }, id:"buzz_button" %>
+  <div data-controller="hello">
+    <h2 data-hello-target="status", id="buzz_status"><%= @buzz.clicked %></h2>
 
+    <%= link_to "Buzz", party_group_buzz_path(params[:party_name], @group.name, @buzz.id), data: { turbo_method: :patch, hello_target: "buzzer", action: "click->hello#buzz" }, id:"buzz_button" %>
+
+  </div>
 </div>

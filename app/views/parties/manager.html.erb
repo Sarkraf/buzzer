@@ -1,6 +1,9 @@
-
-Manage
-<%= @party.name %>
-
+<div class="container mx-auto text-center text-white" style="height: 90vh">
+  <h1 class="text-center my-4">Manage <%= @party.name %></h1>
+  <hr>
 <%# <%= link_to "Next", reset_all_buzzers, data: { turbo_method: :patch } %>
 
+  <div class="align-items-end">
+     <button class="btn btn-primary rounded-pill fs-3 px-3"> Next round ! </button>
+  </div>
+</div>
