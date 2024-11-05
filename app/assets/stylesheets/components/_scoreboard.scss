@@ -1,31 +1,3 @@
-.scoreboard-container {
-  width: 60vw;
-  display: flex;
-  padding: 5vh 5vw;
-}
-
-.scoreboard {
-  width: 100%;
-  max-width: 600px;
-  border-collapse: collapse;
-  font-family: Arial, sans-serif;
-}
-
-.scoreboard th,
-.scoreboard td {
-  padding: 12px;
-  text-align: center;
-}
-
-.scoreboard thead {
-  background-color: #f4f4f4;
-  font-weight: bold;
-}
-
-.scoreboard tbody tr:nth-child(even).visible {
-  background-color: #f9f9f9;
-}
-
 .scoreboard tbody td {
   opacity: 0;
   transform: translateY(20px);
@@ -35,5 +7,4 @@
 .scoreboard tbody td.visible {
   opacity: 1;
   transform: translateY(0);
-  border: 1px solid #ddd;
 }

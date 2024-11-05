@@ -23,7 +23,7 @@ document.addEventListener("turbo:load", () => {
             });
             tbody.childNodes.forEach((tr, index) => {
               setTimeout(() => {
-                tr.classList.add("visible");
+                tr.classList.add("fs-4", "visible");
                 tr.querySelectorAll("td").forEach(td => {
                   td.classList.add("visible");
                 });
