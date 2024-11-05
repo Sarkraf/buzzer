@@ -2,8 +2,8 @@
 
   <h1><%= @group.name %></h1>
 
-<div data-controller="hello">
-  <h2 data-hello-target="status", id="buzz_status"><%= @buzz.clicked %></h2>
+
+  <h2 id="buzz_status"><%= @buzz.clicked %></h2>
   <h2 id="clickable"><%= @buzz.clickable %></h2>
 
   <%= link_to buzz_path(@buzz.id), data: { id: @buzz.id, clicked: @buzz.clicked, clickable: @buzz.clickable, turbo_method: :patch }, id:"buzz_button", role:"button" do %>

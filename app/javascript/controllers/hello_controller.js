@@ -1,8 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["status", "buzzer"]
-  buzz(event) {
+  connect() {
 
     // console.log(this.statusTarget.innerText);
 
