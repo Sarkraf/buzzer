@@ -2,8 +2,13 @@ class BuzzsController < ApplicationController
   def update
     @buzz = Buzz.find(params[:id])
     @party = @buzz.party
-    @buzz.buzz!
-    @party.disable_buzzs
+
+    if @buzz.clickable
+      @buzz.buzz!
+      @party.disable_buzzs
+      PartyChannel.broadcast_to(@party, { action: "buzz", group: @buzz.group, buzz: @buzz })
+    end
+
     # respond_to do |format|
     #   format.turbo_stream
     #   format.html { redirect_to request.referer }
