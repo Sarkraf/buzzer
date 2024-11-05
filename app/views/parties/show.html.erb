@@ -1,6 +1,9 @@
-<div class="container mt-5">
+
+
+<div class="container mt-5 scoreboard-container">
+  <h1 id="party-name"><%= @party.name %></h1>
   <div class="col-12 col-md-6">
-    <table class="table table-striped table-dark table-bordered text-white">
+    <table class="table table-striped table-dark table-bordered text-white scoreboard" id="score-list">
       <caption class="text-white fs-1" style="caption-side: top">LEADERBOARD</caption>
       <thead class="fs-3">
         <tr>
@@ -10,14 +13,8 @@
         </tr>
       </thead>
 
-      <tbody class="table-group-divider">
-      <% @ranked_groups.each do |group| %>
-        <tr class="fs-4">
-            <td><%= @ranked_groups.find_index(group) + 1 %></td>
-            <td><%= group.name %></td>
-            <td><%= group.score %></td>
-        </tr>
-      <% end %>
+      <tbody class="table-group-divider" id="score-rows">
+     
       </tbody>
     </table>
   </div>

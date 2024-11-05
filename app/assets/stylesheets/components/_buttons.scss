@@ -1,0 +1,34 @@
+.button {
+  display: inline-block;
+  /* Makes the button an inline block element */
+  padding: 12px 24px;
+  /* Ample padding for a comfortable touch target */
+  font-size: 16px;
+  /* Readable font size */
+  color: #ffffff;
+  /* Text color */
+  background-color: #007bff;
+  /* Primary color */
+  border: none;
+  /* Remove default border */
+  border-radius: 5px;
+  /* Slightly rounded corners */
+  text-align: center;
+  /* Center the text */
+  text-decoration: none;
+  /* Remove underline from links */
+  transition: background-color 0.3s ease;
+  /* Smooth transition for hover effect */
+  cursor: pointer;
+  /* Pointer cursor on hover */
+}
+
+.button:hover {
+  background-color: #0056b3;
+  /* Darker shade on hover */
+}
+
+.button:active {
+  background-color: #004494;
+  /* Even darker shade when pressed */
+}

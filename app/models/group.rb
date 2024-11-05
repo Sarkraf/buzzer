@@ -13,7 +13,7 @@ class Group < ApplicationRecord
   end
 
   def update_score(operator, score)
-    self.score = self.score.send(operator, score)
+    self.score = self.score.send(operator, score.to_i)
     save
   end
 

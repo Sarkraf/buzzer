@@ -18,8 +18,8 @@
   <hr>
 
   <div class="d-grid text-center mt-4" >
-    <%= link_to "Scoreboard", party_path(@party.name), class:"mx-auto col-6 col-md-2 btn btn-danger rounded-pill text-white mb-3" %>
-
-    <%= link_to "Manage", party_manager_path(@party.name, @party.url), class:"mx-auto col-6 col-md-2 btn btn-danger rounded-pill text-white mb-3" %>
+    <%= link_to "Scoreboard", party_path(@party.name), class: "mx-auto col-6 col-md-2 btn btn-danger rounded-pill text-white mb-3" %>
+    <button class="mx-auto col-6 col-md-2 btn btn-danger rounded-pill text-white mb-3" data-controller="manager", data-action="click->manager#checkPassword", data-party-name='<%= @party.name %>'>Manage</button>
   </div>
+
 </div>
