@@ -1,19 +1,16 @@
-<h1><%= @party.name %></h1>
+<h1 id="party-name"><%= @party.name %></h1>
 
-<div>
-  <table>
-    <tr>
-      <th>"#"</th>
-      <th>Group</th>
-      <th>Points</th>
-    </tr>
-    <% @ranked_groups.each_with_index do |group, index| %>
+<div class="scoreboard-container">
+  <table class="scoreboard" id="score-list">
+    <thead>
       <tr>
-          <td><%= index + 1 %></td>
-          <td><%= group.name %></td>
-          <td><%= group.score %></td>
+        <th>#</th>
+        <th>Group</th>
+        <th>Points</th>
       </tr>
-    <% end %>
-    </tr>
+    </thead>
+    <tbody id="score-rows">
+      <!-- Dynamic rows will be inserted here -->
+    </tbody>
   </table>
 </div>

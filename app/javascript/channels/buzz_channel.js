@@ -2,35 +2,40 @@ import consumer from "./consumer";
 
 
 document.addEventListener("turbo:load", () => {
-  if (document.querySelector("#buzz_button")) {
-
-    // Arrivée sur la show group
-
-    const buzzer = document.querySelector("#buzz_button");
+  const buzzer = document.querySelector("#buzz_button");
+  if (buzzer) {
+    const buzzerId = buzzer.dataset.id;
     const image = buzzer.querySelector("svg");
-    setBuzz(buzzer.dataset.clickable);
-    // console.log("hello from channel");
-    consumer.subscriptions.create("BuzzChannel", {
-      received(data) {
-        // Action click sur le buzzer
-        console.log("test");
-        console.log(data.buzz.clickable);
-        if (data.action === "disable_buzzers") {
-          // Désactive le bouton de buzzer sur chaque page
-          setBuzz(data.buzz.clickable);
-        }
-      }
-    })
+    // Arrivée sur la show group
     function setBuzz(clickable) {
-      if (clickable == "true") {
-        console.log("ici");
+      if (clickable) {
         image.classList.remove("buzz-disabled")
         image.classList.add("buzz-enabled")
       } else {
-        console.log("la");
         image.classList.remove("buzz-enabled")
         image.classList.add("buzz-disabled")
       }
+    }
+
+    if (buzzerId) {
+      const subscription = consumer.subscriptions.create(
+        { channel: "BuzzChannel", id: buzzerId },
+        {
+          connected() {
+            this.perform("confirm_subscription");
+          },
+          received(data) {
+            if (data.action !== "update") {
+              setBuzz(data.buzz.clickable);
+            }
+          },
+        }
+      );
+
+      // Annulation de la souscription lorsque l'élément #buzzer n'est plus sur la page
+      document.addEventListener("turbo:before-cache", () => {
+        consumer.subscriptions.remove(subscription);
+      });
     }
   }
 })

@@ -15,11 +15,19 @@ class Party < ApplicationRecord
     end
   end
 
-  def reset_buzzs
-    buzzs.each { |buzz| buzz.update(clicked: false, clickable: true) }
+  def ranked_groups
+    return groups.sort_by(&:score).reverse
+  end
+
+  def next_round
+    buzzs.each(&:new_round)
+  end
+
+  def next_try
+    buzzs.each(&:retry)
   end
 
   def disable_buzzs
-    buzzs.each { |buzz| buzz.update(clickable: false) }
+    buzzs.each(&:disable)
   end
 end

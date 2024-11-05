@@ -6,7 +6,7 @@
   <h2 data-hello-target="status", id="buzz_status"><%= @buzz.clicked %></h2>
   <h2 id="clickable"><%= @buzz.clickable %></h2>
 
-  <%= link_to party_group_buzz_path(params[:party_name], @group.name, @buzz.id), data: { clickable: @buzz.clickable, turbo_method: :patch }, id:"buzz_button", role:"button", disabled: true do %>
-    <%= inline_svg_tag "red_buzzer.svg", alt: "Buzzer", class:"buzz" %>
+  <%= link_to buzz_path(@buzz.id), data: { id: @buzz.id, clicked: @buzz.clicked, clickable: @buzz.clickable, turbo_method: :patch }, id:"buzz_button", role:"button" do %>
+    <%= inline_svg_tag "buzzer.svg", alt: "Buzzer", class:"buzz" %>
   <% end %>
 </div>

@@ -13,13 +13,23 @@ Rails.application.routes.draw do
 
   root to: "parties#index"
 
-  get "parties/:name/choice", to: "parties#choice", as: :party_choice
+  # get "parties/:name/fetch_data", to: "parties#fetch_data", as: :fetch_data
 
-  get "parties/:name/:url", to: "parties#manager", as: :party_manager
+  # get "parties/:name/choice", to: "parties#choice", as: :party_choice
+
+  # get "parties/:name/:url", to: "parties#manager", as: :party_manager
+
+  resources :buzzs, only: %i[update]
 
   resources :parties, param: :name, only: %i[create show] do
-    resources :groups, param: :name, only: %i[show create] do
-      resources :buzzs, only: %i[update]
+    member do
+      get :fetch_data
+      get :choice
+      get ":url", to: "parties#manager", as: :manager
+      patch :next_round, to: "parties#next_round"
+      patch :next_try, to: "parties#next_try"
+      patch :update_score, to: "parties#update_score"
     end
+    resources :groups, param: :name, only: %i[show create]
   end
 end

@@ -12,10 +12,12 @@
   <%= simple_form_for [@party, @group] do |f| %>
     <%= f.input :name, label: "Nom du groupe" %>
     <%= f.input :party_id, as: :hidden, input_html: { value: @party.id } %>
-    <%= f.button :submit, "Créer le groupe" %>
+    <%= f.button :submit, "Créer le groupe", class:"btn btn-danger rounded-pill text-white mb-3" %>
   <% end %>
 
-  <%= link_to "Show", party_path(@party.name) %>
+  <%= link_to "Show", party_path(@party.name), class: "button" %>
 
-  <%= link_to "Manage", party_manager_path(@party.name, @party.url) %>
+
+  <%# <%= link_to "Manage", party_manager_path(@party.name, @party.url), data: {controller: :manager, action: "click->manager#checkPassword", party_name: @party.name } %>
+  <button class="button" data-controller="manager", data-action="click->manager#checkPassword", data-party-name='<%= @party.name %>'>Manage</button>
 </div>

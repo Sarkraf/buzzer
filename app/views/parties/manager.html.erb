@@ -1,6 +1,14 @@
+<h1 id="party"><%= @party.name %></h1>
 
-Manage
-<%= @party.name %>
+<div data-controller="manager" data-action="click->manager#scoring">
+  <button>+1</button>
+  <button>+2</button>
+  <button>Bonus</button>
+  <button>Malus</button>
 
-<%# <%= link_to "Next", reset_all_buzzers, data: { turbo_method: :patch } %>
+</div>
 
+
+
+  <%= button_to "Next Try", next_try_party_path(@party.name), method: :patch, remote: true, id:"next-try" %>
+  <%= button_to "Next Round", next_round_party_path(@party.name), method: :patch, remote: true, id:"next-round" %>

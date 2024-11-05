@@ -1,30 +1,47 @@
 class PartiesController < ApplicationController
+  before_action :set_party, only: %i[show choice next_round next_try fetch_data update_score]
+  skip_before_action :verify_authenticity_token, only: %i[update_score]
+
+  def set_party
+    @party = Party.find_by(name: params[:name])
+  end
+
   def index
     @parties = Party.all
   end
 
   def show
-    @party = Party.find_by(name: params[:name])
     @groups = @party.groups
-    @ranked_groups = @groups.sort_by(&:score).reverse
   end
 
   def choice
-    @party = Party.find_by(name: params[:name])
     @group = Group.new
     @groups = @party.groups
   end
 
   def manager
-    @party = Party.find_by(name: params[:name])
+    @party = Party.find_by(url: params[:url])
+    redirect_to root_path, alert: "Party not found" if @party.nil?
   end
 
-  def next
-    reset_all_buzzers
+  def next_round
+    # set score
+    @party.next_round
   end
 
-  def reset_all_buzzers
-    @party = Party.find_by(name: params[:name])
-    @party.reset_buzzs
+  def next_try
+    @party.next_try
+  end
+
+  def update_score
+    @group = @party.buzzs.last_buzzed.group
+    if @group.update_score(params[:operator], params[:value])
+      # next round
+      PartyChannel.broadcast_to(@party, { action: "next_round", party: @party, groups: @party.ranked_groups })
+    end
+  end
+
+  def fetch_data
+    render json: { party: @party }
   end
 end
