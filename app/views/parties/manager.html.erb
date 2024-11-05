@@ -1,14 +1,13 @@
-<h1 id="party"><%= @party.name %></h1>
+<div class="container mx-auto text-center text-white" style="height: 90vh">
+  <h1 id="party" class="text-center my-4"><%= @party.name %></h1>
+  <hr>
+            <div data-controller="manager" data-action="click->manager#scoring">
 
-<div data-controller="manager" data-action="click->manager#scoring">
-  <button>+1</button>
-  <button>+2</button>
-  <button>Bonus</button>
-  <button>Malus</button>
+            </div>
+  <hr>
 
+  <div class="align-items-end">
+    <%= button_to "Next Try", next_try_party_path(@party.name), method: :patch, remote: true, id:"next-try" %>
+    <%= button_to "Next Round !", next_round_party_path(@party.name), class:"btn btn-primary rounded-pill fs-3 px-3", method: :patch, remote: true, id:"next-round" %>
+  </div>
 </div>
-
-
-
-  <%= button_to "Next Try", next_try_party_path(@party.name), method: :patch, remote: true, id:"next-try" %>
-  <%= button_to "Next Round", next_round_party_path(@party.name), method: :patch, remote: true, id:"next-round" %>

@@ -15,9 +15,11 @@
     <%= f.button :submit, "Créer le groupe", class:"btn btn-danger rounded-pill text-white mb-3" %>
   <% end %>
 
-  <%= link_to "Show", party_path(@party.name), class: "button" %>
+  <hr>
 
+  <div class="d-grid text-center mt-4" >
+    <%= link_to "Scoreboard", party_path(@party.name), class: "mx-auto col-6 col-md-2 btn btn-danger rounded-pill text-white mb-3" %>
+    <button class="mx-auto col-6 col-md-2 btn btn-danger rounded-pill text-white mb-3" data-controller="manager", data-action="click->manager#checkPassword", data-party-name='<%= @party.name %>'>Manage</button>
+  </div>
 
-  <%# <%= link_to "Manage", party_manager_path(@party.name, @party.url), data: {controller: :manager, action: "click->manager#checkPassword", party_name: @party.name } %>
-  <button class="button" data-controller="manager", data-action="click->manager#checkPassword", data-party-name='<%= @party.name %>'>Manage</button>
 </div>

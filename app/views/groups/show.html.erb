@@ -1,6 +1,6 @@
-<h1><%= @group.name %></h1>
+<div class="container mt-5 text-center text-white">
 
-<hr>
+  <h1><%= @group.name %></h1>
 
 <div data-controller="hello">
   <h2 data-hello-target="status", id="buzz_status"><%= @buzz.clicked %></h2>
@@ -9,4 +9,5 @@
   <%= link_to buzz_path(@buzz.id), data: { id: @buzz.id, clicked: @buzz.clicked, clickable: @buzz.clickable, turbo_method: :patch }, id:"buzz_button", role:"button" do %>
     <%= inline_svg_tag "buzzer.svg", alt: "Buzzer", class:"buzz" %>
   <% end %>
+
 </div>
