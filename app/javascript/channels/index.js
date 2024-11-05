@@ -1,3 +1,3 @@
-import "./consumer"
-import "./buzz_channel"
-import "./party_channel"
+import "channels/consumer"
+import "channels/buzz_channel"
+import "channels/party_channel"
