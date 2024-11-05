@@ -47,7 +47,7 @@ document.addEventListener("turbo:load", () => {
 
   const managerElement = document.querySelector("#manager");
   if (managerElement) {
-    consumer.subscriptions.create(
+    const subscription = consumer.subscriptions.create(
       { channel: "PartyChannel", name: managerElement.innerText },
       {
         received(data) {
@@ -59,5 +59,8 @@ document.addEventListener("turbo:load", () => {
         }
       }
     );
+    document.addEventListener("turbo:before-cache", () => {
+      consumer.subscriptions.remove(subscription);
+    });
   }
 });

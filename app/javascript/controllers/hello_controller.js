@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["status", "buzzer"]
   buzz(event) {
 
-    console.log(this.statusTarget.innerText);
+    // console.log(this.statusTarget.innerText);
 
 
     // fetch(`parties/Le Wagon/groups/Group 1`)
