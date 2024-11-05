@@ -1,4 +1,22 @@
-<%= link_to update_score("+", 2), "Correct ! 2 points !", class:"btn btn-danger rounded-pill"%>
-<%= link_to update_score("+", 1), "Almost ! 1 point !", class:"btn btn-danger rounded-pill"%>
-<%= link_to update_score("+", 0), "Nope ! No points !", class:"btn btn-danger rounded-pill"%>
-<%= link_to update_score("-", 1), "Stop Cheating ! -1 point !", class:"btn btn-danger rounded-pill"%>
+<!-- Modal -->
+<div class="modal fade" id="pointsManager" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="pointsManagerLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="pointsManagerLabel">Attribute Points</h1>
+        <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> %>
+      </div>
+      <div class="modal-body">
+        ...
+        <div data-controller="manager" data-action="click->manager#scoring">
+          <button type="button" class="btn btn-primary rounded-pill" data-bs-dismiss="modal">+1</button>
+          <button type="button" class="btn btn-success rounded-pill" data-bs-dismiss="modal">+2</button>
+          <button type="button" class="btn btn-danger rounded-pill" data-bs-dismiss="modal">Nope</button>
+        </div>
+
+      <div class="modal-footer">
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

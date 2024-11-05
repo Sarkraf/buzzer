@@ -5,9 +5,9 @@
 <div data-controller="hello">
   <h2 data-hello-target="status", id="buzz_status"><%= @buzz.clicked %></h2>
   <h2 id="clickable"><%= @buzz.clickable %></h2>
-
+<div data-bs-toggle="modal" data-bs-target="#pointsManager">
   <%= link_to buzz_path(@buzz.id), data: { id: @buzz.id, clicked: @buzz.clicked, clickable: @buzz.clickable, turbo_method: :patch }, id:"buzz_button", role:"button" do %>
     <%= inline_svg_tag "buzzer.svg", alt: "Buzzer", class:"buzz" %>
   <% end %>
-
+</div>
 </div>
