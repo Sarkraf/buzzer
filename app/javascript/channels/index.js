@@ -1,2 +1,2 @@
-import "./channels/buzz_channel"
-import "./channels/party_channel"
+import "./buzz_channel"
+import "./party_channel"
