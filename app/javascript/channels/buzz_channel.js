@@ -26,8 +26,11 @@ document.addEventListener("turbo:load", () => {
           },
           received(data) {
             if (data.action !== "update") {
+              console.log(data.buzz.clickable);
+
               setBuzz(data.buzz.clickable);
             }
+            // clicked = true // clickable = false
           },
         }
       );

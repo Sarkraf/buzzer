@@ -1,10 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
+
 // Connects to data-controller="manager"
 export default class extends Controller {
 
   connect() {
-    console.log("Hello from manager controller");
   }
 
   checkPassword(event) {
@@ -24,8 +24,8 @@ export default class extends Controller {
   };
 
   scoring(event) {
-    const encodedPartyName = encodeURIComponent(document.querySelector("#party").innerText);
-    if (["Bonus", "Malus"].includes(event.target.innerText)) {
+    const encodedPartyName = encodeURIComponent(document.querySelector("#manager").innerText);
+    if (["Bonus", "Malus", "Nope"].includes(event.target.innerText)) {
       console.log("test");
 
 
