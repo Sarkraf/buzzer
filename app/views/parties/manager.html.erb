@@ -1,8 +1,8 @@
 <div class="container mx-auto text-center text-white" style="height: 90vh">
-  <h1 id="party" class="text-center my-4"><%= @party.name %></h1>
+  <h1 id="manager" class="text-center my-4"><%= @party.name %></h1>
   <hr>
             <div data-controller="manager" data-action="click->manager#scoring">
-
+              <%= render 'modal' %>
             </div>
   <hr>
 
