@@ -15,15 +15,15 @@
   margin-bottom: 8px;
   object-fit: cover;
 
-    .selected {
-      border: 2px solid red;
-    }
 }
 
-
+.avatar-selector.selected {
+  border: 5px solid rgb(217, 0, 0);
+}
 .avatar-large {
   width: 56px;
   border-radius: 50%;
+  object-fit: cover;
 }
 .avatar-bordered {
   width: 40px;

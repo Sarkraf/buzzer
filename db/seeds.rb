@@ -9,16 +9,12 @@
 #   end
 
 puts "Destroying all parties..."
-puts "Destroying all groups..."
 puts "Destroying all buzzs..."
 Party.destroy_all # Destroy all parties and groups + buzzs (dependent: :destroy)
+Avatar.destroy_all # Destroy all avatars
 
 puts "Creating parties..."
 Party.create!(name: "Le Wagon", passphrase: "lewagon", url: "lewagon")
-
-puts "Creating groups..."
-Group.create!(name: "Group 1", party: Party.first)
-Group.create!(name: "Group 2", party: Party.first)
 
 puts "Creating avatars..."
 Avatar.create!(filename: "bill.png")

@@ -3,9 +3,9 @@
     <div class="modal-content">
       <div class="modal-body" data-controller="avatar-selector">
 
-        <div class="overflow-x-auto d-flex flex-wrap justify-content-evenly">
+        <div>
           <% @avatars.each do |a| %>
-            <%= image_tag asset_path("avatars/#{a.filename}"), class: "avatar-selector", data: { avatar_selector_target: "avatar", id: a.id } %>
+            <%= image_tag image_path("avatars/#{a.filename}"), class: "avatar-selector", data: { avatar_selector_target: "avatar", id: a.id } %>
           <% end %>
         </div>
 
