@@ -22,7 +22,15 @@
   border: none;
   display: flex;
   justify-content: center;
-  height: 80vh;
+  height: 85vh;
   width: 100%;
+}
+
+.buzz-header {
+  display: flex;
+  justify-content: center;
   align-items: center;
+  padding-bottom: 2.5vh;
+  height: 10vh;
+  width: 100%;
 }
