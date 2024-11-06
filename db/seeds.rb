@@ -19,3 +19,16 @@ Party.create!(name: "Le Wagon", passphrase: "lewagon", url: "lewagon")
 puts "Creating groups..."
 Group.create!(name: "Group 1", party: Party.first)
 Group.create!(name: "Group 2", party: Party.first)
+
+puts "Creating avatars..."
+Avatar.create!(filename: "bill.png")
+Avatar.create!(filename: "cockroach.png")
+Avatar.create!(filename: "cursed.png")
+Avatar.create!(filename: "dwight.png")
+Avatar.create!(filename: "jeff.png")
+Avatar.create!(filename: "jul.png")
+Avatar.create!(filename: "mickael.png")
+Avatar.create!(filename: "morty.png")
+Avatar.create!(filename: "penguin.png")
+Avatar.create!(filename: "rick.png")
+Avatar.create!(filename: "robocop.png")

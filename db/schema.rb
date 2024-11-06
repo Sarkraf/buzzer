@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_04_222652) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_06_170414) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "avatars", force: :cascade do |t|
+    t.string "filename"
+    t.boolean "taken", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "buzzs", force: :cascade do |t|
     t.datetime "time", default: -> { "CURRENT_TIMESTAMP" }
@@ -30,6 +37,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_04_222652) do
     t.bigint "party_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "avatar_id", null: false
+    t.index ["avatar_id"], name: "index_groups_on_avatar_id"
     t.index ["party_id"], name: "index_groups_on_party_id"
   end
 
@@ -42,5 +51,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_04_222652) do
   end
 
   add_foreign_key "buzzs", "groups"
+  add_foreign_key "groups", "avatars"
   add_foreign_key "groups", "parties"
 end

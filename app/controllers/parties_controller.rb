@@ -17,6 +17,7 @@ class PartiesController < ApplicationController
   def choice
     @group = Group.new
     @groups = @party.groups
+    @avatars = Avatar.available
   end
 
   def manager

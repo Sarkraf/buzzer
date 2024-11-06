@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
     else
       @party = @group.party
       @groups = @party.groups
+      @avatars = Avatar.available
       render "parties/choice", status: :unprocessable_entity
     end
   end
@@ -18,6 +19,6 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :party_id)
+    params.require(:group).permit(:name, :party_id, :avatar_id)
   end
 end
