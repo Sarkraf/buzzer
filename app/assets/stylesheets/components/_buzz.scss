@@ -10,8 +10,11 @@
   border: 3px solid #e7e7e7;
   border-radius: 50%;
   text-decoration: none;
-  max-height: 100%;
-  min-height: 80%;
+  // min-width: 80vh;
+  width: 80vh;
+  max-width: 80vw;
+  height: 80vh;
+  max-height: 80vw;
 }
 
 .buzz-button {
