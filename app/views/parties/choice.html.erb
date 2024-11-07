@@ -1,4 +1,4 @@
-<div class="container mt-5 text-center text-white">
+<div id="choice" class="container mt-5 text-center text-white">
   <h1><%= @party.name %></h1>
 
   <hr>
@@ -8,13 +8,12 @@
     <% end %>
   </div>
   <hr>
-
-  <%= simple_form_for [@party, @group] do |f| %>
-    <%= f.input :name, label: "Nom du groupe" %>
-    <%= f.input :party_id, as: :hidden, input_html: { value: @party.id } %>
-    <%= f.button :submit, "Créer le groupe", class:"btn btn-danger rounded-pill text-white mb-3" %>
-  <% end %>
-
+  <div>
+    <button type="button" class="btn btn-danger col-6 col-md-2 rounded-pill text-white" data-bs-toggle="modal" data-bs-target="#groupCreator">
+      Create a group
+    </button>
+    <%= render 'groups/group-creator', model: {group: @group, party: @party} %>
+    </div>
   <hr>
 
   <div class="d-grid text-center mt-4" >

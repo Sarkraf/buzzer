@@ -2,9 +2,10 @@
 <div class="text-white" style="width: 100vw; height: 100vh; padding-top: 2.5vh">
   <div class="buzz-header">
     <h1 class="m-0"><%= @group.name %></h1>
+    <%=  image_tag image_path("avatars/#{@group.avatar.filename}"), class:"mx-5 avatar-large"%>
   </div>
-
   <%= button_to buzz_path(@buzz.id), data: { id: @buzz.id, clicked: @buzz.clicked, clickable: @buzz.clickable }, method: :patch, id:"buzz_button", class:"buzz-button" do %>
+
     <%= inline_svg_tag "buzzer.svg", alt: "Buzzer", class:"buzz" %>
   <% end %>
 
