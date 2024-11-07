@@ -6,8 +6,8 @@ class Avatar < ApplicationRecord
     where(taken: false)
   end
 
-  def self.taken
-    where(taken: true)
+  def taken?
+    self.taken
   end
 
   def take

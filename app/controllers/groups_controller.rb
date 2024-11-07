@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
       @party = @group.party
       @groups = @party.groups
       @avatars = Avatar.available
+      @group = Group.new
       render "parties/choice", status: :unprocessable_entity
     end
   end

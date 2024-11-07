@@ -1,4 +1,4 @@
-<div class="container mt-5 text-center text-white">
+<div id="choice" class="container mt-5 text-center text-white">
   <h1><%= @party.name %></h1>
 
   <hr>
@@ -12,7 +12,7 @@
     <button type="button" class="btn btn-danger col-6 col-md-2 rounded-pill text-white" data-bs-toggle="modal" data-bs-target="#groupCreator">
       Create a group
     </button>
-    <%= render 'group-creator' %>
+    <%= render 'groups/group-creator', model: {group: @group, party: @party} %>
     </div>
   <hr>
 
