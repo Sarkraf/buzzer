@@ -17,7 +17,7 @@ class PartiesController < ApplicationController
   def choice
     @group = Group.new
     @groups = @party.groups
-    @avatars = Avatar.available
+    @avatars = @party.available_avatars
   end
 
   def display_group
@@ -43,7 +43,7 @@ class PartiesController < ApplicationController
     @group = @party.buzzs.last_buzzed.group
     if @group.update_score(params[:operator], params[:value])
       # next round
-      PartyChannel.broadcast_to(@party, { action: "update_score", party: @party, groups: @party.ranked_groups })
+      PartyChannel.broadcast_to(@party, { action: "update_score", party: @party, groups: @party.ranked_groups, operator: params[:operator] })
     end
   end
 

@@ -13,13 +13,25 @@ document.addEventListener("turbo:load", () => {
           },
           received(data) {
             if (data.action === "buzz") {
-              console.log(data.avatar.filename);
-
-              const groupDisplay = document.getElementById('groupDisplay');
-              groupDisplay.innerHTML = data.group.name;
-              const groupAvatar = document.getElementById('groupAvatar');
-              groupAvatar.innerHTML = `<img src="/assets/avatars/${data.avatar.filename}" class="mx-5 avatar-xl" id="player-avatar">`;
+              const groupAvatar = document.querySelector('#image');
+              groupAvatar.insertAdjacentHTML("beforeend", `<img src="/assets/avatars/${data.avatar.filename}" class="mx-5 avatar-xl" id="player-avatar">`);
               // console.log(data);
+            }
+
+            if ("update_score" === data.action) {
+              const groupAvatar = document.querySelector('#player-avatar');
+              if (data.operator === "+") {
+                groupAvatar.classList.add("green")
+                setTimeout(() => {
+                  groupAvatar.remove()
+                }, 3000);
+
+              } else {
+                groupAvatar.classList.add("red")
+                setTimeout(() => {
+                  groupAvatar.classList.remove("red")
+                }, 3000);
+              }
             }
 
             if (["update_score", "initial_state"].includes(data.action)) {
@@ -27,7 +39,7 @@ document.addEventListener("turbo:load", () => {
               tbody.innerHTML = "";
               data.groups.forEach((group, index) => {
                 const tr = document.createElement("tr");
-                tr.innerHTML = `<td>${index + 1}</td>
+                tr.innerHTML = `<td class="text-center">${index + 1}</td>
                 <td>${group.name}</td>
                 <td>${group.score}</td>`;
                 tbody.appendChild(tr);
