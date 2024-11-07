@@ -24,13 +24,13 @@ document.addEventListener("turbo:load", () => {
                 groupAvatar.classList.add("green")
                 setTimeout(() => {
                   groupAvatar.remove()
-                }, 3000);
+                }, 5000);
 
               } else {
                 groupAvatar.classList.add("red")
                 setTimeout(() => {
                   groupAvatar.classList.remove("red")
-                }, 3000);
+                }, 5000);
               }
             }
 
