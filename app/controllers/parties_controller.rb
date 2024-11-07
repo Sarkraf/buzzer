@@ -27,6 +27,7 @@ class PartiesController < ApplicationController
 
   def manager
     @party = Party.find_by(url: params[:url])
+    @groups = @party.groups
     redirect_to root_path, alert: "Party not found" if @party.nil?
   end
 
