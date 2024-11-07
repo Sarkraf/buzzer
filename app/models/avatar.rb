@@ -4,10 +4,6 @@ class Avatar < ApplicationRecord
 
   validates :filename, presence: true
 
-  def available
-    where(taken: false)
-  end
-
   def taken?
     taken
   end
