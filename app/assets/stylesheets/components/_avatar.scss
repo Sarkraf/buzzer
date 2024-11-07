@@ -42,4 +42,11 @@
   width: 40vw;
   max-width: 40vw;
   object-fit: fill;
+
+  .green {
+    filter: drop-shadow(0 0 0.75rem rgb(2, 219, 74));
+  }
+  .red {
+    filter: drop-shadow(0 0 0.75rem rgb(248, 0, 0));
+  }
 }

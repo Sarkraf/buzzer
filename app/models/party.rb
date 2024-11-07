@@ -8,6 +8,7 @@ class Party < ApplicationRecord
   validates :url, presence: true, uniqueness: true
 
   before_validation :generate_url
+  after_create :initialize_avatars
 
   def generate_url
     loop do
@@ -30,5 +31,17 @@ class Party < ApplicationRecord
 
   def disable_buzzs
     buzzs.each(&:disable)
+  end
+
+  def available_avatars
+    avatars.where(taken: false)
+  end
+
+  private
+
+  def initialize_avatars
+    avatar_files = Dir.glob(Rails.root.join('app', 'assets', 'images', 'avatars', '*')).each do |file|
+      Avatar.create!(filename: file.split('/').last, party: self)
+    end
   end
 end

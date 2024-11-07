@@ -13,13 +13,18 @@ document.addEventListener("turbo:load", () => {
           },
           received(data) {
             if (data.action === "buzz") {
-              console.log(data.avatar.filename);
-
               const groupDisplay = document.getElementById('groupDisplay');
               groupDisplay.innerHTML = data.group.name;
               const groupAvatar = document.getElementById('groupAvatar');
               groupAvatar.innerHTML = `<img src="/assets/avatars/${data.avatar.filename}" class="mx-5 avatar-xl" id="player-avatar">`;
               // console.log(data);
+            }
+
+            if ("update_score" === data.action) {
+              const groupAvatar = document.getElementById('groupAvatar');
+              groupAvatar.classList.add.
+
+
             }
 
             if (["update_score", "initial_state"].includes(data.action)) {
