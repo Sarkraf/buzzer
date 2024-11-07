@@ -6,7 +6,7 @@ class BuzzsController < ApplicationController
     if @buzz.clickable
       @buzz.buzz!
       @party.disable_buzzs
-      PartyChannel.broadcast_to(@party, { action: "buzz", group: @buzz.group, buzz: @buzz })
+      PartyChannel.broadcast_to(@party, { action: "buzz", group: @buzz.group, buzz: @buzz, avatar: @buzz.group.avatar })
     end
 
     # respond_to do |format|
