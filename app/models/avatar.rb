@@ -1,5 +1,7 @@
 class Avatar < ApplicationRecord
   has_one :group
+  belongs_to :party
+
   validates :filename, presence: true
 
   def self.available

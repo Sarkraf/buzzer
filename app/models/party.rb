@@ -1,6 +1,7 @@
 class Party < ApplicationRecord
   has_many :groups, dependent: :destroy
   has_many :buzzs, through: :groups
+  has_many :avatars
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 25, minimum: 3 }
   validates :passphrase, presence: true

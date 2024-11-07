@@ -1,5 +1,5 @@
 class PartiesController < ApplicationController
-  before_action :set_party, only: %i[show choice next_round next_try fetch_data update_score]
+  before_action :set_party, only: %i[show choice display_group next_round next_try fetch_data update_score]
   skip_before_action :verify_authenticity_token, only: %i[update_score]
 
   def set_party
@@ -18,6 +18,11 @@ class PartiesController < ApplicationController
     @group = Group.new
     @groups = @party.groups
     @avatars = Avatar.available
+  end
+
+  def display_group
+    @group = @party.buzzs.last_buzzed.group
+    @avatar = @group.avatar
   end
 
   def manager

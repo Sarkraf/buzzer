@@ -12,7 +12,15 @@ document.addEventListener("turbo:load", () => {
             this.perform("confirm_subscription");
           },
           received(data) {
+            if (data.action === "buzz") {
+              console.log(data.avatar.filename);
 
+              const groupDisplay = document.getElementById('groupDisplay');
+              groupDisplay.innerHTML = data.group.name;
+              const groupAvatar = document.getElementById('groupAvatar');
+              groupAvatar.innerHTML = `<img src="/assets/avatars/${data.avatar.filename}" class="mx-5 avatar-xl" id="player-avatar">`;
+              // console.log(data);
+            }
 
             if (["update_score", "initial_state"].includes(data.action)) {
               const tbody = document.getElementById("score-rows");
