@@ -30,4 +30,16 @@ export default class extends Controller {
       this.menuTarget.classList.add("hidden");
     }
   }
+
+  select(event) {
+    // Prevent the event from propagating to avoid immediate closure of the menu
+    // Close the menu
+    this.menuTarget.classList.add("hidden");
+
+    // set group to input
+    const label = document.querySelector('#score-label');
+    const input = document.querySelector('#score-value');
+    label.innerText = input.dataset.group;
+    input.dataset.group = event.target.innerText
+  }
 }

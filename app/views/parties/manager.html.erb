@@ -11,14 +11,32 @@
     <%= button_to "Next Round !", next_round_party_path(@party.name), class:"col btn btn-primary col-6 rounded-pill fs-3 p-3", method: :patch, remote: true, id:"next-round" %>
   </div>
 
-  <div data-controller="dropdown" class="dropdown-center">
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" data-action="click->dropdown#toggle">
-    Groups
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-dropdown-target="menu">
-    <% @groups.each do |group| %>
-      <li><p class="dropdown-item"><%= group.name %></p></li>
-    <% end %>
-  </ul>
-</div>
+  <div id="group-selector" class="d-flex justify-content-around">
+
+    <div data-controller="manager" class="w-25">
+      <div id="manual-scoring" class="d-flex flex-column">
+        <label for="score-value" id="score-label"></label>
+        <input type="number" inputmode="numeric" id="score-value" data-group="" data-manager-target="input">
+        <div>
+          <button type="button" class="btn btn-success rounded-pill my-3" data-action="click->manager#scoring">Bonus</button>
+          <button type="button" class="btn btn-danger rounded-pill my-3" data-action="click->manager#scoring">Malus</button>
+        </div>
+      </div>
+    </div>
+
+    <div data-controller="dropdown" class="dropdown-center w-25">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" data-action="click->dropdown#toggle">
+        Groups
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-dropdown-target="menu">
+        <% @groups.each do |group| %>
+          <li><p class="dropdown-item" data-action="click->dropdown#select"><%= group.name %></p></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div id="freddify"  class="w-25">
+
+    </div>
+  </div>
 </div>

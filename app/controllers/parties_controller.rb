@@ -42,7 +42,12 @@ class PartiesController < ApplicationController
   end
 
   def update_score
-    @group = @party.buzzs.last_buzzed.group
+    if Group.find_by(name: params[:group]).nil?
+      @group = @party.buzzs.last_buzzed.group
+    else
+      @group = Group.find_by(name: params[:group])
+    end
+
     if @group.update_score(params[:operator], params[:value])
       # next round
       PartyChannel.broadcast_to(@party, { action: "update_score", party: @party, groups: @party.ranked_groups, operator: params[:operator], avatar: @group.avatar })
