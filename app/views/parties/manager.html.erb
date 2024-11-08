@@ -10,4 +10,14 @@
     <%= button_to "Next Try !", next_try_party_path(@party.name), class:"col btn btn-secondary col-6 rounded-pill fs-3 p-3", method: :patch, remote: true, id:"next-try" %>
     <%= button_to "Next Round !", next_round_party_path(@party.name), class:"col btn btn-primary col-6 rounded-pill fs-3 p-3", method: :patch, remote: true, id:"next-round" %>
   </div>
+
+<%= simple_form_for :freddify, url: freddify_party_path(@party.name), method: :patch do |f| %>
+  <div class="form-group">
+    <div class="col-6 mx-auto d-flex flex-row">
+      <%= f.input :group_name, collection: @party.groups, label_method: :name, value_method: :name, prompt: "None", input_html: { class: "form-control" }, label: false %>
+      <%= f.button :submit, "Freddify", class: "btn btn-danger" %>
+    </div>
+  </div>
+<% end %>
+
 </div>

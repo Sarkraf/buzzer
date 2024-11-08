@@ -25,6 +25,12 @@ class PartiesController < ApplicationController
     @avatar = @group.avatar
   end
 
+  def freddify
+    @party = Party.find_by(params[:name])
+    @group = @party.groups.find_by(params[:group_name])
+    @group.avatar.update(filename:"fred.png")
+  end
+
   def manager
     @party = Party.find_by(url: params[:url])
     @groups = @party.groups

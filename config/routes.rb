@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       patch :next_round, to: "parties#next_round"
       patch :next_try, to: "parties#next_try"
       patch :update_score, to: "parties#update_score"
+      patch :freddify, to: "parties#freddify"
     end
     resources :groups, param: :name, only: %i[show create]
   end
