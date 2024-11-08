@@ -15,23 +15,26 @@ document.addEventListener("turbo:load", () => {
           },
           received(data) {
             if (data.action === "buzz") {
-              const groupAvatar = document.querySelector('#image');
-              groupAvatar.insertAdjacentHTML("beforeend", `<img src="assets/images/${data.avatar.filename}" class="mx-5 avatar-xl" id="player-avatar">`);
+              const avatarId = data.avatar.id;
+              const avatar = document.querySelector('#party-avatar-' + avatarId);
+              avatar.classList.toggle("d-none");
               // console.log(data);
             }
 
             if ("update_score" === data.action) {
-              const groupAvatar = document.querySelector('#player-avatar');
+              const groupAvatar = document.querySelector(`#party-avatar-${data.avatar.id}`);
               if (data.operator === "+") {
-                groupAvatar.classList.add("green")
+                groupAvatar.classList.toggle("green")
                 setTimeout(() => {
-                  groupAvatar.remove()
+                  groupAvatar.classList.toggle("green")
+                  groupAvatar.classList.toggle("d-none")
                 }, 5000);
 
               } else {
-                groupAvatar.classList.add("red")
+                groupAvatar.classList.toggle("red")
                 setTimeout(() => {
-                  groupAvatar.classList.remove("red")
+                  groupAvatar.classList.toggle("red")
+                  groupAvatar.classList.toggle("d-none")
                 }, 5000);
               }
             }

@@ -18,8 +18,11 @@
       </table>
     </div>
   </div>
-  <div id="avatar-container" class="mt-5 me-5" style="width: 60vw, height: 80vh">
-    <div id="image" class="d-flex align-items-center" style="height: 100%">
+  <div class="mt-5 me-5" style="width: 60vw, height: 80vh">
+    <div id="avatars-container" class="d-flex align-items-center" style="height: 100%">
+        <% @avatars.each do |avatar| %>
+          <%= image_tag image_path("avatars/#{avatar.filename}"), class:"mx-5 avatar-xl d-none", id:"party-avatar-#{avatar.id}"%>
+        <% end %>
     </div>
   </div>
 </div>
