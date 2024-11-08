@@ -16,7 +16,7 @@ document.addEventListener("turbo:load", () => {
           received(data) {
             if (data.action === "buzz") {
               const groupAvatar = document.querySelector('#image');
-              groupAvatar.insertAdjacentHTML("beforeend", `<img src="assets/${data.avatar.filename}" class="mx-5 avatar-xl" id="player-avatar">`);
+              groupAvatar.insertAdjacentHTML("beforeend", `<img src="assets/images/${data.avatar.filename}" class="mx-5 avatar-xl" id="player-avatar">`);
               // console.log(data);
             }
 
