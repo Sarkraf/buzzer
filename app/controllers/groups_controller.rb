@@ -2,13 +2,14 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
+      @group.avatar.take
       redirect_to party_group_path(@group.party.name, @group.name)
     else
       @party = @group.party
       @groups = @party.groups
-      @avatars = Avatar.available
+      @avatars = @party.avatars
       @group = Group.new
-      render "parties/choice", status: :unprocessable_entity
+      redirect_to request.referer, status: :unprocessable_entity
     end
   end
 

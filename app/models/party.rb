@@ -1,7 +1,7 @@
 class Party < ApplicationRecord
   has_many :groups, dependent: :destroy
   has_many :buzzs, through: :groups
-  has_many :avatars
+  has_many :avatars, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 25, minimum: 3 }
   validates :passphrase, presence: true
@@ -40,7 +40,7 @@ class Party < ApplicationRecord
   private
 
   def initialize_avatars
-    avatar_files = Dir.glob(Rails.root.join('app', 'assets', 'images', 'avatars', '*')).each do |file|
+    Dir.glob(Rails.root.join('app', 'assets', 'images', 'avatars', '*')).each do |file|
       Avatar.create!(filename: file.split('/').last, party: self)
     end
   end

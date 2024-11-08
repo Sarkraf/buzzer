@@ -1,9 +1,9 @@
 import consumer from "channels/consumer";
 
 document.addEventListener("turbo:load", () => {
-  const partyElement = document.querySelector("#party-name");
-  if (partyElement) {
-    const partyName = partyElement.innerText;
+  const partyView = document.querySelector("#party-view");
+  if (partyView) {
+    const partyName = partyView.innerText;
     if (partyName) {
       const subscription = consumer.subscriptions.create(
         { channel: "PartyChannel", name: partyName },
@@ -21,8 +21,7 @@ document.addEventListener("turbo:load", () => {
             }
 
             if ("update_score" === data.action) {
-              const groupAvatar = document.getElementById('groupAvatar');
-              groupAvatar.classList.add.
+
 
 
             }
