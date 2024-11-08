@@ -11,11 +11,11 @@ export default class extends Controller {
 
       const oldAvatar = document.querySelector("img.selected");
       if (oldAvatar) {
-        await this.toggle(oldAvatar, false);
         oldAvatar.classList.remove("selected");
+        await this.toggle(oldAvatar, false);
       }
-      await this.toggle(newAvatar, true);
       newAvatar.classList.add("selected");
+      await this.toggle(newAvatar, true);
       setTimeout(() => {
         newAvatar.classList.remove("taken");
       }, 15);

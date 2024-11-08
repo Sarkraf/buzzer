@@ -10,4 +10,15 @@
     <%= button_to "Next Try !", next_try_party_path(@party.name), class:"col btn btn-secondary col-6 rounded-pill fs-3 p-3", method: :patch, remote: true, id:"next-try" %>
     <%= button_to "Next Round !", next_round_party_path(@party.name), class:"col btn btn-primary col-6 rounded-pill fs-3 p-3", method: :patch, remote: true, id:"next-round" %>
   </div>
+
+  <div data-controller="dropdown" class="dropdown-center">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" data-action="click->dropdown#toggle">
+    Groups
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-dropdown-target="menu">
+    <% @groups.each do |group| %>
+      <li><p class="dropdown-item"><%= group.name %></p></li>
+    <% end %>
+  </ul>
+</div>
 </div>
