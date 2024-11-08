@@ -48,6 +48,7 @@
 .avatar-xl {
   width: 40vw;
   max-width: 40vw;
+  border-radius: 0 0 50% 50%;
   object-fit: fill;
 
   .green {
@@ -57,4 +58,12 @@
   .red {
     filter: drop-shadow(0 0 0.75rem rgb(248, 0, 0));
   }
+}
+
+.avatar-xl.green {
+  filter: drop-shadow(0 0 2rem rgb(2, 219, 74));
+}
+
+.avatar-xl.red {
+  filter: drop-shadow(0 0 2rem rgb(248, 0, 0));
 }

@@ -10,6 +10,8 @@ class Group < ApplicationRecord
   before_validation :set_score_to_zero, if: :new_record?
   after_create :create_buzz
 
+  GROUPS = Group.all
+
   def set_score_to_zero
     self.score = 0
   end
