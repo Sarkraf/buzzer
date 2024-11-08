@@ -17,24 +17,31 @@
 
 }
 
+.avatar-selector.taken {
+  filter: grayscale(100%);
+}
+
 .avatar-selector.selected {
   border: 5px solid rgb(217, 0, 0);
 }
+
 .avatar-large {
   width: 56px;
   border-radius: 50%;
   object-fit: cover;
 }
+
 .avatar-bordered {
   width: 40px;
   border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border: white 1px solid;
 }
+
 .avatar-square {
   width: 40px;
   border-radius: 0px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border: white 1px solid;
 }
 
@@ -43,6 +50,14 @@
   max-width: 40vw;
   border-radius: 0 0 50% 50%;
   object-fit: fill;
+
+  .green {
+    filter: drop-shadow(0 0 0.75rem rgb(2, 219, 74));
+  }
+
+  .red {
+    filter: drop-shadow(0 0 0.75rem rgb(248, 0, 0));
+  }
 }
 
 .avatar-xl.green {

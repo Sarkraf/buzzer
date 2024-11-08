@@ -3,17 +3,16 @@
     <div class="modal-content">
       <div class="modal-body" data-controller="avatar-selector">
 
-        <div>
-          <% @avatars.each do |a| %>
-            <%= image_tag image_path("avatars/#{a.filename}"), class: "avatar-selector", data: { avatar_selector_target: "avatar", id: a.id } %>
+        <div id="avatars">
+          <% @avatars.each do |avatar| %>
+            <%= image_tag image_path("avatars/#{avatar.filename}"), class: "avatar-selector", data: { action:"click->avatar-selector#selectAvatar", avatar_selector_target:"img", id:avatar.id } %>
           <% end %>
         </div>
 
         <%= simple_form_for [@party, @group] do |f| %>
-
           <%= f.input :name, label: "Nom du groupe" %>
-          <%= f.input :party_id, as: :hidden, input_html: { value: @party.id } %>
-          <%= f.input :avatar_id, as: :hidden, input_html: { data: { avatar_selector_target: "input" } } %>
+          <%= f.hidden_field :party_id, value: @party.id %>
+          <%= f.hidden_field :avatar_id, data: { avatar_selector_target: "avatarId" } %>
           <%= f.button :submit, "Créer le groupe", class:"btn btn-danger rounded-pill text-white mb-3" %>
         <% end %>
         <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal" aria-label="Close">Cancel</button>

@@ -1,9 +1,9 @@
 import consumer from "channels/consumer";
 
 document.addEventListener("turbo:load", () => {
-  const partyElement = document.querySelector("#party-name");
-  if (partyElement) {
-    const partyName = partyElement.innerText;
+  const partyView = document.querySelector("#party-view");
+  if (partyView) {
+    const partyName = partyView.innerText;
     if (partyName) {
       const subscription = consumer.subscriptions.create(
         { channel: "PartyChannel", name: partyName },

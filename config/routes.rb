@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # get "parties/:name/choice", to: "parties#choice", as: :party_choice
 
   # get "parties/:name/:url", to: "parties#manager", as: :party_manager
+  post "/avatars/:id", to: "avatars#toggle"
 
   resources :buzzs, only: %i[update]
 

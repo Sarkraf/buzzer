@@ -2,17 +2,35 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="avatar-selector"
 export default class extends Controller {
-  static targets = ["avatar", "input"]
+  static targets = ["img", "avatarId"]
 
-  connect() {
-    this.avatarTargets.forEach(avatar => {
-      avatar.addEventListener("click", this.selectAvatar.bind(this))
-    })
+  async selectAvatar(event) {
+    if (!event.currentTarget.classList.contains("taken") && !event.currentTarget.classList.contains("selected")) {
+      const newAvatar = event.currentTarget;
+      this.avatarIdTarget.value = newAvatar.dataset.id;
+
+      const oldAvatar = document.querySelector("img.selected");
+      if (oldAvatar) {
+        await this.toggle(oldAvatar, false);
+        oldAvatar.classList.remove("selected");
+      }
+      await this.toggle(newAvatar, true);
+      newAvatar.classList.add("selected");
+      setTimeout(() => {
+        newAvatar.classList.remove("taken");
+      }, 15);
+
+    }
   }
 
-  selectAvatar(event) {
-    this.avatarTargets.forEach(avatar => avatar.classList.remove("selected"))
-    event.currentTarget.classList.add("selected")
-    this.inputTarget.value = event.currentTarget.dataset.id
+  async toggle(avatar, boolean) {
+    await fetch(`/avatars/${avatar.dataset.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ toggle: boolean })
+    });
   }
+
 }

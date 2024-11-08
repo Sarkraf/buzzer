@@ -11,20 +11,9 @@
 puts "Destroying all parties..."
 puts "Destroying all buzzs..."
 Party.destroy_all # Destroy all parties and groups + buzzs (dependent: :destroy)
-Avatar.destroy_all # Destroy all avatars
+
 
 puts "Creating parties..."
 Party.create!(name: "Le Wagon", passphrase: "lewagon", url: "lewagon")
 
 puts "Creating avatars..."
-Avatar.create!(filename: "bill.png", party: Party.last)
-Avatar.create!(filename: "cockroach.png", party: Party.last)
-Avatar.create!(filename: "cursed.png", party: Party.last)
-Avatar.create!(filename: "dwight.png", party: Party.last)
-Avatar.create!(filename: "jeff.png", party: Party.last)
-Avatar.create!(filename: "jul.png", party: Party.last)
-Avatar.create!(filename: "mickael.png", party: Party.last)
-Avatar.create!(filename: "morty.png", party: Party.last)
-Avatar.create!(filename: "penguin.png", party: Party.last)
-Avatar.create!(filename: "rick.png", party: Party.last)
-Avatar.create!(filename: "robocop.png", party: Party.last)
