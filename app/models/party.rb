@@ -40,8 +40,9 @@ class Party < ApplicationRecord
   private
 
   def initialize_avatars
-    avatar_files = Dir.glob(Rails.root.join('app', 'assets', 'images', 'avatars', '*')).each do |file|
-      Avatar.create!(filename: file.split('/').last, party: self)
+    Dir.glob(Rails.root.join('app', 'assets', 'images', 'avatars', '*')).each do |file|
+      file_name = file.split('/').last
+      Avatar.create!(filename: file_name, party: self) unless file_name == "fred.png"
     end
   end
 end

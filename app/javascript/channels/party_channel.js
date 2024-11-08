@@ -4,11 +4,13 @@ document.addEventListener("turbo:load", () => {
   const partyView = document.querySelector("#party-view");
   if (partyView) {
     const partyName = partyView.innerText;
+    console.log("test");
     if (partyName) {
       const subscription = consumer.subscriptions.create(
         { channel: "PartyChannel", name: partyName },
         {
           connected() {
+
             this.perform("confirm_subscription");
           },
           received(data) {
